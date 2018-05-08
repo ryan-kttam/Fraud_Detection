@@ -50,3 +50,13 @@ trainDataX.shape
 testDataX.shape
 modelDataX.shape
 validDataX.shape
+
+# applying SVM to the data
+from sklearn.svm import SVC
+clf = SVC(kernel='linear') # possible parameter: kernel = (linear , poly , rbf , sigmoid , precomputed)
+clf.fit ( modelDataX , modelDataY )
+pred = clf.predict(validDataX)
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(validDataY, pred)
+# accuracy is 99.87%, but due to the imbalance of the number of actual fruad, we need to test an F1 score
+# in order to calculate out of all actual fraud, how many did this model detected.
