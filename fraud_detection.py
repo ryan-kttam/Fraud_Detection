@@ -56,7 +56,17 @@ from sklearn.svm import SVC
 clf = SVC(kernel='linear') # possible parameter: kernel = (linear , poly , rbf , sigmoid , precomputed)
 clf.fit ( modelDataX , modelDataY )
 pred = clf.predict(validDataX)
-from sklearn.metrics import accuracy_score
+
+from sklearn.metrics import accuracy_score , f1_score , precision_score , recall_score
+#from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
 accuracy = accuracy_score(validDataY, pred)
+f1 = f1_score(validDataY, pred)
+precision = f1_score(validDataY, pred)
+recall = recall_score(validDataY, pred)
+
+print  'Accuracy: ', accuracy, '\nF1 Score:', f1, '\nPrecision Score:', precision, '\nRecall Score:', recall
 # accuracy is 99.87%, but due to the imbalance of the number of actual fruad, we need to test an F1 score
 # in order to calculate out of all actual fraud, how many did this model detected.
+
+# All F1 score, precision score, and recall score do not score higher than 0.5.
+# Further test is needed to be done.
